@@ -1,0 +1,21 @@
+textarea.ant-input {
+    width: 300px;
+}
+
+.avatar-uploader>.ant-upload {
+    width: 128px;
+    height: 128px;
+}
+
+@mixin flexa($fx:row, $justcont:flex-start, $align:flex-start) {
+    display: flex;
+    flex-direction: $fx;
+    justify-content: $justcont;     
+    align-items: $align;
+}
+
+.szp {
+    @include flexa(column);
+    margin: 100px auto;
+    width: 400px;
+}

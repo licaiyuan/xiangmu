@@ -18,11 +18,11 @@ const fs = require('fs'); // 图片路径
 
 var storage = multer.diskStorage({
     //文件保存路径
-    destination: function (req, file, cb) {
+    destination: function(req, file, cb) {
         cb(null, 'public/upload/')
     },
     //修改文件名称
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
         var fileFormat = (file.originalname).split(".");
         // cb(null, Date.now() + "." + fileFormat[fileFormat.length - 1]);
         cb(null, file.originalname);
@@ -50,7 +50,7 @@ router.get('/', (ctx, next) => {
     ctx.body = 'zxczxc'
 });
 //登录或者注册
-router.post('/login', async function (ctx, next) {
+router.post('/login', async function(ctx, next) {
 
     // console.log(ctx.query)
     console.log(ctx.request.body)
@@ -58,7 +58,7 @@ router.post('/login', async function (ctx, next) {
     let accounts = new account2(account)
     const registe = () => {
         return new Promise((resolve, reject) => {
-            accounts.save(function (err, res) {
+            accounts.save(function(err, res) {
                 console.log("注册:" + '-' + res);
                 resolve(res)
             });
@@ -67,7 +67,7 @@ router.post('/login', async function (ctx, next) {
 
     const login = () => {
         return new Promise((resolve, reject) => {
-            account2.find({ 'username': account.username }, function (err, res) {
+            account2.find({ 'username': account.username }, function(err, res) {
                 console.log("登录:" + '-' + res)
                 resolve(res)
             })
@@ -79,19 +79,19 @@ router.post('/login', async function (ctx, next) {
 
 });
 //请求视频列表
-router.get('/spqqlb', async function (ctx, next) {
+router.get('/spqqlb', async function(ctx, next) {
 
     const promiseClick = () => {
 
 
         //做一些异步操作
-        var pageSize = 20;                   //一页多少条
-        var currentPage = 1;                //当前第几页
-        var sort = { 'logindate': -1 };        //排序（按登录时间倒序）
-        var condition = {};                 //条件
-        var skipnum = (currentPage - 1) * pageSize;   //跳过数
+        var pageSize = 20; //一页多少条
+        var currentPage = 1; //当前第几页
+        var sort = { 'logindate': -1 }; //排序（按登录时间倒序）
+        var condition = {}; //条件
+        var skipnum = (currentPage - 1) * pageSize; //跳过数
         return new Promise((resolve, reject) => {
-            scspzp2.find({}).skip(skipnum).limit(pageSize).sort(sort).exec(function (err, res) {
+            scspzp2.find({}).skip(skipnum).limit(pageSize).sort(sort).exec(function(err, res) {
                 resolve(res)
                 console.log(res)
             })
@@ -100,14 +100,14 @@ router.get('/spqqlb', async function (ctx, next) {
 
     }
     const sjjs = () => {
-        return new Promise((resolve, reject) => {
-            scspzp2.count({}, function (err, res) {
-                resolve(res)
+            return new Promise((resolve, reject) => {
+                scspzp2.count({}, function(err, res) {
+                    resolve(res)
+                })
             })
-        })
-    }
-    // let sl = await sjjs();
-    // ctx.body = await promiseClick();
+        }
+        // let sl = await sjjs();
+        // ctx.body = await promiseClick();
     ctx.body = {
         sl: await sjjs(),
         content: await promiseClick()
@@ -120,7 +120,7 @@ router.get('/spqqlb', async function (ctx, next) {
 });
 //上传图片文件视频
 
-router.post('/upload/image', upload.array('sp', 5), async function (ctx, next) {
+router.post('/upload/image', upload.array('sp', 5), async function(ctx, next) {
 
     console.log(ctx.req.body)
     let { title, jj, spmz, zpmz } = ctx.req.body
@@ -131,7 +131,7 @@ router.post('/upload/image', upload.array('sp', 5), async function (ctx, next) {
         spmz: spmz,
         zpmz: zpmz,
     });
-    scspzpa.save(function (err, res) {
+    scspzpa.save(function(err, res) {
         if (err) {
             console.log("Error:" + err);
         } else {
@@ -140,7 +140,7 @@ router.post('/upload/image', upload.array('sp', 5), async function (ctx, next) {
     });
     // console.log(ctx.req.zp)
     ctx.body = {
-        filename: 'bbbb'//返回文件名
+        filename: 'bbbb' //返回文件名
     }
 })
 
@@ -149,10 +149,10 @@ router.post('/upload/image', upload.array('sp', 5), async function (ctx, next) {
 app
     .use(router.routes())
     .use(router.allowedMethods())
-// .use(async (ctx, next) => {
-//     ctx.set('Access-Control-Allow-Credentials', true);
-//     await next();
-// });
+    // .use(async (ctx, next) => {
+    //     ctx.set('Access-Control-Allow-Credentials', true);
+    //     await next();
+    // });
 console.log('服务器开启')
-// 监听4000端口
+    // 监听4000端口
 app.listen(4000);

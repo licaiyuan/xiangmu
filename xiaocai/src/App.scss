@@ -1,0 +1,75 @@
+@import '~antd/dist/antd.css';
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+}
+
+.dbhs {
+    background-color: rgba(197, 184, 184, 0.17);
+    width: 100%;
+    height: 37px;
+}
+
+.ant-input-group-wrapper {
+    width: 365px;
+    position: relative;
+    left: 8px;
+}
+
+.yhdssk {
+    display: flex;
+    align-items: center;
+    border: solid 3px rgba(233, 30, 99, 0.73);
+    border-radius: 49px;
+    padding: 0 0 0 10px;
+    width: 445px;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.ant-btn-primary {
+    border-radius: 58px;
+    background-color: rgba(233, 30, 99, 0.73);
+    border-color: rgba(233, 30, 99, 0.73);
+}
+
+.qbjz {
+    width: 970px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 22px;
+    z-index: 100;
+   display: flex;
+}
+
+.ant-input-group-addon {
+    background-color: rgba(233, 30, 99, 0.73) !important;
+    border-radius: 27px;
+}
+
+.ant-input-group .ant-input {
+    width: 261px;
+    position: absolute;
+    left: 57px;
+
+}
+
+video {
+    width: 100%;
+    height: 300px;
+}
+img{
+    width: 73px;
+    height: 73px;
+    cursor: pointer;
+}
+.ant-col-6{
+    text-align: center;
+}
+.lbfy{
+    text-align: center;
+    margin-top: 15px;
+}
